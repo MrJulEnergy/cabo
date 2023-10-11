@@ -10,8 +10,8 @@ class Player:
     def __init__(self, starting_hand) -> None:
         self.hand = starting_hand
 
-    def take(self, other: Deck):
-        pass
+    def take(self, other: Deck, num: int):
+        np.append(self.hand, other.give(num))
 
     def swap(self, other: Player):
         pass
@@ -33,7 +33,7 @@ class Game:
 
     def startup(self):
         self.deck = Deck(Deck.standard_set())
-        self.deck.shuffle()
+        #self.deck.shuffle()
         self.players = np.array([Player(self.deck.give(self.n_cards)) for _ in range(self.n_players)])
 
     def game_loop(self):
@@ -42,6 +42,11 @@ class Game:
 
 if __name__ == "__main__":
     g = Game(2)
+    for player in g.players:
+        for card in player.hand:
+            print(card.value)
+    print("\n")
+    g.players[0].take(g.deck, 2)
     for player in g.players:
         for card in player.hand:
             print(card.value)
