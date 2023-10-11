@@ -1,10 +1,27 @@
-# Cabo Game
+from __future__ import annotations
 import numpy as np
 from cards import PlayingCard, Deck
+
+# Cabo Game
+
+
 
 class Player:
     def __init__(self, starting_hand) -> None:
         self.hand = starting_hand
+
+    def take(self, other: Deck):
+        pass
+
+    def swap(self, other: Player):
+        pass
+
+    def spy(self, other: Player):
+        pass
+
+    def peek(self):
+        pass
+
 
 class Game:
     def __init__(self, n_players: int, n_cards: int = 4) -> None:
